@@ -1,5 +1,5 @@
 from Branch import Branch
-from functions import buildTree
+from functions import *
 
 def test1():
     N= 4
@@ -14,5 +14,24 @@ def test1():
 
     AT, AL= buildTree(N, branches)
     print(AT, AL)
+
+def test2():
+    B = [[1 , 1 , 0 , 1 , 0 , 0],
+         [0 , -1 , 1 , 0 , 1 , 0],
+         [1 , 1 , -1 , 0 , 0 , 1]]
+    BT = [[1 , 0 , 1],
+          [1 , -1 ,1],
+          [0 , 1 , -1],
+          [1 , 0 , 0],
+          [0 , 1 , 0],
+          [0 , 0 , 1]]
+    ZB = [[5 , 0 , 0 , 0 , 0 , 0],
+          [0 , 10 , 0 , 0 , 0 , 0],
+          [0 , 0 , 5 , 0 , 0 , 0],
+          [0 , 0 , 0 , 5 , 0 , 0],
+          [0 , 0 , 0 , 0 , 5 , 0],
+          [0 , 0 , 0 , 0 , 0 , 10]]
+    EB = [50,0,0 , 0 , 0 , 0]
+    print(find_VB(ZB , find_JB(BT , find_IL(B , ZB , 0 , EB , BT))))
 
 

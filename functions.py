@@ -3,8 +3,6 @@ from Branch import Branch
 from typing import List
 from DSU import DSU
 
-np.set_printoptions(suppress=True)
-
 def find_CL(AT, AL):
     AT_Inverse = np.linalg.inv(AT)
     CL = np.dot(AT_Inverse , AL)
