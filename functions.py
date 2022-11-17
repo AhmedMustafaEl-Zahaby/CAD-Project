@@ -1,4 +1,9 @@
 import numpy as np
+from Branch import Branch
+from typing import List
+from DSU import DSU
+
+np.set_printoptions(suppress=True)
 
 def find_CL(AT, AL):
     AT_Inverse = np.linalg.inv(AT)
@@ -6,7 +11,7 @@ def find_CL(AT, AL):
     return CL
 
 
-def fing_BT(CL):
+def find_BT(CL):
     BT = -1 * np.matrix.transpose(CL)
 
 
