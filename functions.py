@@ -42,6 +42,36 @@ def find_JB(BT , IL):
 def find_VB(ZB , JB):
     VB = np.dot(ZB , JB)
     return VB
+def buildTree(N, branches):
+    #Generates AT and AL
+    AT= [[] for i in range(N)]
+    AL= [[] for i in range(N)]
+
+    dsu= DSU(N)
+    for branch in branches:
+        start, end= branch.start, branch.end
+        if dsu.sameGroup(start, end):
+            for i in range(N):
+                d= 0
+                if i == start:
+                    d= 1
+                elif i == end:
+                    d= -1
+                AL[i].append(d)
+        
+        else:
+            dsu.union(start, end)
+            for i in range(N):
+                d= 0
+                if i == start:
+                    d= 1
+                elif i == end:
+                    d= -1
+                AT[i].append(d)
+
+    AT.pop()
+    AL.pop()
+    return [AT, AL]
 
 if __name__ == '__main__':
     pass

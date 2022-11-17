@@ -35,3 +35,4 @@ def test2():
     print(find_VB(ZB , find_JB(BT , find_IL(B , ZB , 0 , EB , BT))))
 
 
+test1()
