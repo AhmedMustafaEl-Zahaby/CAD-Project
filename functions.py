@@ -5,13 +5,17 @@ from DSU import DSU
 
 np.set_printoptions(suppress=True)
 
-def find_cl(AT, AL):
+def find_CL(AT, AL):
     AT_Inverse = np.linalg.inv(AT)
     CL = np.dot(AT_Inverse , AL)
     return CL
 
-def find_b(CL):
+
+def find_BT(CL):
     BT = -1 * np.matrix.transpose(CL)
+
+
+def find_B(BT):
     BT_Matrix = np.matrix(BT)
     rows,columns = BT_Matrix.shape
     Identity_Matrix = np.eye(rows)
@@ -21,18 +25,25 @@ def find_b(CL):
     B = np.matrix(Buff)
     return B
 
+def find_IL(B , ZB , IB , EB , BT):
+    #first term = B * ZB
+    first_term = np.dot(B , ZB)
+    #second term = B * ZB * IB
+    second_term = np.dot(first_term , IB)
+    #third term = B * EB
+    EB_matrix = np.rot90(np.rot90(np.rot90(np.matrix(EB))))
+    third_term = np.dot(B , EB_matrix)
+    divisor = np.linalg.inv(np.dot(first_term , BT))
+    IL = np.matmul(divisor,third_term)
+    return IL
 
-if __name__ == '__main__':
-    AT = [[-1, 1, 1],
-          [0, 0, -1],
-          [1, 0, 0]]
-    AL = [[1, 0],
-          [0, 0],
-          [-1, -1]]
-    CL = find_cl(AT, AL)
-    print(CL)
-    print(find_b(CL))
+def find_JB(BT , IL):
+    JB = np.dot(BT , IL)
+    return  JB
 
+def find_VB(ZB , JB):
+    VB = np.dot(ZB , JB)
+    return VB
 def buildTree(N, branches):
     #Generates AT and AL
     AT= [[] for i in range(N)]
@@ -63,3 +74,7 @@ def buildTree(N, branches):
     AT.pop()
     AL.pop()
     return [AT, AL]
+
+if __name__ == '__main__':
+    pass
+
