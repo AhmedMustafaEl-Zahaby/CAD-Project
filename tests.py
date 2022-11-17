@@ -15,4 +15,4 @@ def test1():
     AT, AL= buildTree(N, branches)
     print(AT, AL)
 
-
+test1()
