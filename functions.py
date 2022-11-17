@@ -35,12 +35,8 @@ if __name__ == '__main__':
 
 def buildTree(N, branches):
     #Generates AT and AL
-    AT= []
-    AL= []
-
-    for i in range(N):
-        AT.append([])
-        AL.append([])
+    AT= [[] for i in range(N)]
+    AL= [[] for i in range(N)]
 
     dsu= DSU(N)
     for branch in branches:
