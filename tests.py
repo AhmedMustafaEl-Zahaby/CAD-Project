@@ -1,6 +1,6 @@
 from Branch import Branch
 from functions import *
-
+from plot import *
 def test1():
     N= 4
     branches= []
@@ -49,6 +49,19 @@ def test3():
     print(find_VB(N , branches))
     pass
 
+def test4():
+    N = 4
+    branches= []
+
+    branches.append(Branch(2, 0, 50, 0, 5))
+    branches.append(Branch(0, 3, 0, 0, 10))
+    branches.append(Branch(3, 2, 0, 0, 5))
+    branches.append(Branch(0, 1, 0, 0, 5))
+    branches.append(Branch(1, 2, 0, 0, 10))
+    branches.append(Branch(1, 3, 0, 0, 5))
+    Plot_graph(branches)
+
 
 # test1()
 test3()
+# test4()

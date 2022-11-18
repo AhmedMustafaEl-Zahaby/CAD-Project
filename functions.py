@@ -3,6 +3,7 @@ from Branch import Branch
 from typing import List
 from DSU import DSU
 
+
 def buildTree(N, branches):
     #Generates AT and AL
     AT= [[] for i in range(N)]
@@ -105,7 +106,7 @@ def find_IL(N , branches):
 def find_JB(N , brances):
     IL,BT = find_IL(N , brances)
     JB = np.dot(BT , IL)
-    return  JB
+    return JB
 
 def find_VB(N , branches):
     JB = find_JB(N , branches)
